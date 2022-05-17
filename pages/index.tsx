@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectItems, Itemtype } from "../features/items";
 import Items from "../components/organisms/items";
 import { GetStaticProps, NextPage } from "next";
-// import admin from '../firebase/nodeApp';
 import { useState } from "react";
 import firebase from "../firebase/firebaseConfig";
 
@@ -16,7 +15,6 @@ interface Props {
 
 const Home: NextPage<Props> = (props) => {
   const items = props.items;
-  // const items = useSelector(selectItems)
   const [searchItems, setSearchitems] = useState<Itemtype[]>(items);
   const [noSearch, setNosearch] = useState(false);
   const search = (word: string | undefined) => {
