@@ -1,9 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import SearchItems from "../components/molecule/SearchItems";
-import { useDispatch, useSelector } from "react-redux";
-import { selectItems, Itemtype } from "../features/items";
+import { Itemtype } from "../features/items";
 import Items from "../components/organisms/items";
 import { GetStaticProps, NextPage } from "next";
 import { useState } from "react";

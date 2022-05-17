@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Btn from "../components/atom/Btn";
 import { CartItems } from "../components/molecule/CartItems";
 import { selectItems } from "../features/items";
