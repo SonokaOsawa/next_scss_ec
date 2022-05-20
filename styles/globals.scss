@@ -1,18 +1,24 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
 }
 
 body {
-  padding-top: 100px;
-  /* ヘッダーの後ろに要素が隠れないようにするため */
+  padding-top: 100px; /* ヘッダーの後ろに要素が隠れないようにするため */
   background-color: #e6e6e6;
   margin: 0;
 }
 
+// body {
+//   margin: 0;
+//   padding-top: 90px;
+//   padding: 0;
+//   font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ",
+//     "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+//   background-color: #e6e6e6;
+// }
+
 main {
-  height: 100vw;
-  /* スクロールの演出を見れるようにmainに高さを指定 */
+  height: 100vw; /* スクロールの演出を見れるようにmainに高さを指定 */
   padding: 30px 4% 10px;
 }
 
@@ -36,9 +42,9 @@ h1 {
 a {
   text-decoration: none;
   color: #4b4b4b;
-}
-a:hover {
-  color: #f279b4;
+  &:hover {
+    color: #f279b4;
+  }
 }
 
 ul {
@@ -53,49 +59,43 @@ li {
   color: #4b4b4b;
 }
 
-.home {
+@mixin icon {
   width: 20px;
   height: 20px;
   align-items: center;
   cursor: pointer;
+  &:hover {
+    color: #f279b4;
+  }
 }
-.home:hover {
-  color: #f279b4;
+
+.home {
+  @include icon();
 }
 
 .cart {
-  width: 20px;
-  height: 20px;
-  align-items: center;
-  cursor: pointer;
-}
-.cart:hover {
-  color: #f279b4;
+  @include icon();
 }
 
 nav {
   margin: 0 0 0 auto;
 }
 
-.logoutbutton {
+@mixin headerbutton {
   border: none;
   background-color: #fff;
   padding: 0;
   color: #4b4b4b;
   cursor: pointer;
+  &:hover {
+    color: #f279b4;
+  }
 }
-.logoutbutton:hover {
-  color: #f279b4;
+
+.logoutbutton {
+  @include headerbutton();
 }
 
 .loginbutton {
-  border: none;
-  background-color: #fff;
-  padding: 0;
-  color: #4b4b4b;
-  cursor: pointer;
+  @include headerbutton();
 }
-.loginbutton:hover {
-  color: #f279b4;
-}
-/*# sourceMappingURL=globals.css.map */

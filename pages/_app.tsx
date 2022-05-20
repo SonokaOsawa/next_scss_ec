@@ -1,4 +1,4 @@
-// import '../styles/globals.css'
+import "../styles/globals.css";
 import { AppProps } from "next/app";
 import "firebase/auth";
 import { Provider } from "react-redux";
@@ -12,9 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <Header />
         <div>
-          <div>
-            <Component {...pageProps} />
-          </div>
+          <Component {...pageProps} />
         </div>
       </AuthProvider>
     </Provider>
