@@ -1,4 +1,39 @@
 @charset "UTF-8";
+.searchitems {
+  justify-content: center;
+  display: flex;
+  margin: 10px;
+  background-color: transparent;
+}
+
+.searchfield {
+  justify-content: center;
+  display: flex;
+  border: 1px solid #999;
+  padding: 3px 10px;
+  border-radius: 20px;
+  height: 2.3em;
+  width: 50%;
+  background-color: transparent;
+}
+
+.searchinput {
+  border: none;
+  width: 95%;
+  background-color: transparent;
+}
+.searchinput:focus {
+  outline: 0;
+}
+
+.searchbutton {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
 }

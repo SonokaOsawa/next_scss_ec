@@ -1,5 +1,4 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import SearchItems from "../components/molecule/SearchItems";
 import { Itemtype } from "../features/items";
 import Items from "../components/organisms/items";
