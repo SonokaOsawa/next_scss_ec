@@ -34,21 +34,45 @@
   cursor: pointer;
 }
 
+.items {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  padding: 5% 0%;
+}
+
+.link {
+  text-decoration: none;
+  color: #4b4b4b;
+  padding: 10px;
+  width: 25%;
+}
+.link:hover {
+  color: #f279b4;
+}
+
+.item {
+  padding: 0% 3%;
+  width: 100%;
+}
+
+.image {
+  border-radius: 5%;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  padding-top: 100px;
-  /* ヘッダーの後ろに要素が隠れないようにするため */
+  padding-top: 100px; /* ヘッダーの後ろに要素が隠れないようにするため */
   background-color: #e6e6e6;
   margin: 0;
 }
 
 main {
-  height: 100vw;
-  /* スクロールの演出を見れるようにmainに高さを指定 */
-  padding: 30px 4% 10px;
+  height: 100vh; /* スクロールの演出を見れるようにmainに高さを指定 */
+  padding: 30px 4% 50px;
 }
 
 header {
@@ -66,14 +90,6 @@ h1 {
   margin: 0;
   padding: 0;
   cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-  color: #4b4b4b;
-}
-a:hover {
-  color: #f279b4;
 }
 
 ul {
@@ -132,5 +148,4 @@ nav {
 }
 .loginbutton:hover {
   color: #f279b4;
-}
-/*# sourceMappingURL=globals.css.map */
+}/*# sourceMappingURL=globals.css.map */
