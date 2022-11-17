@@ -14,7 +14,7 @@ export const CartPrice: FC = () => {
     }
   }, [cart]);
   return (
-    <div className="bg-gray-200">
+    <div className="name">
       合計金額：
       <Price price={totalPrice} />
     </div>

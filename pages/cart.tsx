@@ -24,22 +24,23 @@ const ShoppingCart = () => {
     <>
       {cart.iteminfo !== undefined ? (
         cart.iteminfo.length !== 0 ? (
-          <>
-            <div className="flex content-start">
-              <div className="w-2/3 p-2 text-gray-700 text-center">
+          <div className="itemdetailbody">
+            <div className="cartdevide">
+              <div>
                 <CartItems items={items} />
               </div>
-              <div className="w-1/3 p-2 text-gray-700 text-center">
+              <div>
                 <CartPrice />
+                <Btn
+                  text="注文に進む"
+                  classname="cartbutton"
+                  onClick={showForm}
+                />
+                {show && <div>下に入力フォームがあります↓</div>}
               </div>
             </div>
-            <Btn
-              text="注文に進む"
-              classname="flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white"
-              onClick={showForm}
-            />
             {show && <OrderForm />}
-          </>
+          </div>
         ) : (
           <div>カートに商品がありません</div>
         )

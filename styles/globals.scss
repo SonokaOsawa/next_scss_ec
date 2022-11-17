@@ -1,8 +1,7 @@
 @use "searchfield";
-
 @use "itemsarray";
-
 @use "itemdetail";
+@use "cart";
 
 * {
   box-sizing: border-box;
@@ -10,7 +9,7 @@
 
 body {
   padding-top: 100px; /* ヘッダーの後ろに要素が隠れないようにするため */
-  background-color: #e6e6e6;
+  background-color: #f0efef;
   margin: 0;
 }
 
