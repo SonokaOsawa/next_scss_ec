@@ -1,0 +1,68 @@
+.orderformbody {
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.ordertitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.orderformtable {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.orderitem,
+.ordercontent {
+  padding: 10px;
+  border: 1px solid rgb(164, 164, 164);
+}
+
+.orderitem {
+  text-align: left;
+  width: 30%;
+  background-color: rgb(216, 216, 216);
+}
+
+.ordercontent {
+  width: 70%;
+  background-color: white;
+}
+
+.formtext {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  max-width: 600px;
+}
+
+input[type="text"]:focus {
+  outline: 0;
+}
+
+.formselect {
+  width: 180px;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.orderbutton {
+  display: block;
+  margin: 0 auto 40px;
+  color: #fff;
+  background-color: #ff55ff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
+}

@@ -103,267 +103,206 @@ export const OrderForm: FC = () => {
   };
 
   return (
-    <>
-      <div>お届け先情報</div>
-      <div className="mt-10 sm:mt-0">
-        <div className="md:grid md:grid-cols-3 md:gap-6">
-          <div className="mt-5 md:mt-0 md:col-span-3">
-            <form onSubmit={handleSubmit(orderBtn)}>
-              <div className="shadow overflow-hidden sm:rounded-md">
-                <div className="px-4 py-5 bg-white sm:p-6">
-                  <div className="grid grid-cols-6 gap-6">
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        お名前
-                      </label>
-                      <input
-                        type="text"
-                        {...register("name", { required: true })}
-                        name="name"
-                        id="name"
-                        autoComplete="given-name"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {errors.name && (
-                        <p className="text-red-400">お名前を入力してください</p>
-                      )}
-                    </div>
+    <div className="orderformbody">
+      <div className="ordertitle">お届け先情報</div>
+      <form onSubmit={handleSubmit(orderBtn)}>
+        <table className="orderformtable">
+          <tbody>
+            <tr className="ordercontent">
+              <th className="orderitem">お名前</th>
+              <td className="ordercontent">
+                <input
+                  type="text"
+                  {...register("name", { required: true })}
+                  name="name"
+                  id="name"
+                  autoComplete="given-name"
+                  className="formtext"
+                />
+                <br />
+                {errors.name && <span>お名前を入力してください</span>}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">メールアドレス</th>
+              <td className="ordercontent">
+                <input
+                  type="text"
+                  {...register("emailaddress", {
+                    required: true,
+                    pattern: /.+@.+/,
+                  })}
+                  name="emailaddress"
+                  id="email-address"
+                  autoComplete="email"
+                  className="formtext"
+                />
+                <br />
+                {errors.emailaddress?.type === "required" && (
+                  <span>メールアドレスを入力してください</span>
+                )}
+                {errors.emailaddress?.type === "pattern" && (
+                  <span>正しいメールアドレスを入力してください</span>
+                )}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">携帯電話番号</th>
+              <td className="ordercontent">
+                <input
+                  type="text"
+                  {...register("tel", {
+                    required: true,
+                    pattern: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
+                  })}
+                  name="tel"
+                  id="tel"
+                  autoComplete="tel"
+                  className="formtext"
+                />
+                <br />
+                {errors.tel?.type === "required" && (
+                  <span>携帯電話番号を入力してください</span>
+                )}
+                {errors.tel?.type === "pattern" && (
+                  <span>XXX-XXXX-XXXXの形式で入力してください</span>
+                )}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">郵便番号</th>
+              <td className="ordercontent">
+                <input
+                  type="text"
+                  {...register("postalcode", {
+                    required: true,
+                    pattern: /^[0-9]{3}-[0-9]{4}$/,
+                  })}
+                  name="postalcode"
+                  id="postal-code"
+                  autoComplete="postal-code"
+                  className="formtext"
+                />
+                <br />
+                {errors.postalcode?.type === "required" && (
+                  <span>郵便番号を入力してください</span>
+                )}
+                {errors.postalcode?.type === "pattern" && (
+                  <span>XXX-XXXXの形式で入力してください</span>
+                )}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">住所</th>
+              <td className="ordercontent">
+                <input
+                  type="text"
+                  {...register("address", { required: true })}
+                  name="address"
+                  id="street-address"
+                  autoComplete="street-address"
+                  className="formtext"
+                />
+                <br />
+                {errors.address && <span>住所を入力してください</span>}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">配達希望日</th>
+              <td className="ordercontent">
+                <input
+                  type="date"
+                  {...register("date", {
+                    required: true,
+                    validate: () => orderDate - selDate < 0,
+                  })}
+                  name="date"
+                  id="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  className="formselect"
+                />
+                <br />
+                {errors.date?.type === "required" && (
+                  <span>配達希望日を選択してください</span>
+                )}
+                {errors.date?.type === "validate" && (
+                  <span>明日以降の日付を選択してください</span>
+                )}
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">配達希望時間</th>
+              <td className="ordercontent">
+                <select
+                  id="time"
+                  {...register("time", { required: true })}
+                  autoComplete="time"
+                  className="formselect"
+                >
+                  <option value="10">10:00</option>
+                  <option value="11">11:00</option>
+                  <option value="12">12:00</option>
+                  <option value="13">13:00</option>
+                  <option value="14">14:00</option>
+                  <option value="15">15:00</option>
+                  <option value="16">16:00</option>
+                  <option value="17">17:00</option>
+                  <option value="18">18:00</option>
+                </select>
+              </td>
+            </tr>
+            <tr className="ordercontent">
+              <th className="orderitem">お支払い方法</th>
+              <td className="ordercontent">
+                <select
+                  id="paymethod"
+                  {...register("paymethod", { required: true })}
+                  autoComplete="paymethod"
+                  className="formselect"
+                >
+                  <option value="1">代金引換</option>
+                  <option value="2">クレジットカード</option>
+                </select>
+              </td>
+            </tr>
 
-                    <div className="col-span-6 sm:col-span-4">
-                      <label
-                        htmlFor="emailaddress"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        メールアドレス
-                      </label>
-                      <input
-                        type="text"
-                        {...register("emailaddress", {
-                          required: true,
-                          pattern: /.+@.+/,
-                        })}
-                        name="emailaddress"
-                        id="email-address"
-                        autoComplete="email"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {errors.emailaddress?.type === "required" && (
-                        <p className="text-red-400">
-                          メールアドレスを入力してください
-                        </p>
-                      )}
-                      {errors.emailaddress?.type === "pattern" && (
-                        <p className="text-red-400">
-                          正しいメールアドレスを入力してください
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-2">
-                      <label
-                        htmlFor="tell"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        携帯電話番号
-                      </label>
-                      <input
-                        type="text"
-                        {...register("tel", {
-                          required: true,
-                          pattern: /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/,
-                        })}
-                        name="tel"
-                        id="tel"
-                        autoComplete="tel"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {errors.tel?.type === "required" && (
-                        <p className="text-red-400">
-                          携帯電話番号を入力してください
-                        </p>
-                      )}
-                      {errors.tel?.type === "pattern" && (
-                        <p className="text-red-400">
-                          XXX-XXXX-XXXXの形式で入力してください
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label
-                        htmlFor="postalcode"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        郵便番号
-                      </label>
-                      <input
-                        type="text"
-                        {...register("postalcode", {
-                          required: true,
-                          pattern: /^[0-9]{3}-[0-9]{4}$/,
-                        })}
-                        name="postalcode"
-                        id="postal-code"
-                        autoComplete="postal-code"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {errors.postalcode?.type === "required" && (
-                        <p className="text-red-400">
-                          郵便番号を入力してください
-                        </p>
-                      )}
-                      {errors.postalcode?.type === "pattern" && (
-                        <p className="text-red-400">
-                          XXX-XXXXの形式で入力してください
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="col-span-6">
-                      <label
-                        htmlFor="address"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        住所
-                      </label>
-                      <input
-                        type="text"
-                        {...register("address", { required: true })}
-                        name="address"
-                        id="street-address"
-                        autoComplete="street-address"
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                      {errors.address && (
-                        <p className="text-red-400">住所を入力してください</p>
-                      )}
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                      <label
-                        htmlFor="date"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        配達希望日
-                      </label>
-                      <input
-                        type="date"
-                        {...register("date", {
-                          required: true,
-                          validate: () => orderDate - selDate < 0,
-                        })}
-                        name="date"
-                        id="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm border-gray-300 rounded-md"
-                      />
-                      {errors.date?.type === "required" && (
-                        <p className="text-red-400">
-                          配達希望日を選択してください
-                        </p>
-                      )}
-                      {errors.date?.type === "validate" && (
-                        <p className="text-red-400">
-                          明日以降の日付を選択してください
-                        </p>
-                      )}
-                    </div>
-
-                    <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-                      <label
-                        htmlFor="time"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        配達希望時間
-                      </label>
-                      <select
-                        id="time"
-                        {...register("time", { required: true })}
-                        autoComplete="time"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option value="10">10:00</option>
-                        <option value="11">11:00</option>
-                        <option value="12">12:00</option>
-                        <option value="13">13:00</option>
-                        <option value="14">14:00</option>
-                        <option value="15">15:00</option>
-                        <option value="16">16:00</option>
-                        <option value="17">17:00</option>
-                        <option value="18">18:00</option>
-                      </select>
-                    </div>
-
-                    <div className="col-span-6 lg:col-span-2"></div>
-
-                    <div className="col-span-6 sm:col-span-2">
-                      <label
-                        htmlFor="paymethod"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        お支払い方法
-                      </label>
-                      <select
-                        id="paymethod"
-                        {...register("paymethod", { required: true })}
-                        autoComplete="paymethod"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                      >
-                        <option value="1">代金引換</option>
-                        <option value="2">クレジットカード</option>
-                      </select>
-                    </div>
-
-                    {watch("paymethod") === "2" && (
-                      <div className="col-span-6 sm:col-span-3 lg:col-span-2">
-                        <label
-                          htmlFor="card"
-                          className="block text-sm font-medium text-gray-700"
-                        >
-                          クレジットカード番号
-                        </label>
-                        <input
-                          type="text"
-                          {...register("card", {
-                            required: true,
-                            pattern: /^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/,
-                          })}
-                          name="card"
-                          id="card"
-                          autoComplete="card"
-                          className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                        />
-                        {errors.card?.type === "required" && (
-                          <p className="text-red-400">
-                            クレジットカード番号を入力してください
-                          </p>
-                        )}
-                        {errors.card?.type === "pattern" && (
-                          <p className="text-red-400">
-                            XXXX-XXXX-XXXX-XXXXの形式で入力してください
-                          </p>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                  <Btn
-                    classname="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    text="注文する"
-                    onClick={handleSubmit(orderBtn)}
+            {watch("paymethod") === "2" && (
+              <tr className="ordercontent">
+                <th className="orderitem">クレジットカード番号</th>
+                <td className="ordercontent">
+                  <input
+                    type="text"
+                    {...register("card", {
+                      required: true,
+                      pattern: /^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}$/,
+                    })}
+                    name="card"
+                    id="card"
+                    autoComplete="card"
+                    className="formtext"
                   />
-                </div>
-              </div>
-            </form>
-          </div>
+                  <br />
+                  {errors.card?.type === "required" && (
+                    <span>クレジットカード番号を入力してください</span>
+                  )}
+                  {errors.card?.type === "pattern" && (
+                    <span>XXXX-XXXX-XXXX-XXXXの形式で入力してください</span>
+                  )}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
+        <div>
+          <Btn
+            classname="orderbutton"
+            text="注文する"
+            onClick={handleSubmit(orderBtn)}
+          />
         </div>
-      </div>
-    </>
+      </form>
+    </div>
   );
 };
