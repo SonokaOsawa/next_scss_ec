@@ -225,6 +225,13 @@ input[type=radio] {
   opacity: 70%;
 }
 
+.cartempty {
+  text-align: center;
+  margin: 10%;
+  font-weight: 600;
+  font-size: 30px;
+}
+
 .orderformbody {
   margin: 0 auto;
   padding: 30px 0;

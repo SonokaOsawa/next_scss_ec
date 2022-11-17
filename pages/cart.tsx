@@ -42,10 +42,10 @@ const ShoppingCart = () => {
             {show && <OrderForm />}
           </div>
         ) : (
-          <div>カートに商品がありません</div>
+          <div className="cartempty">カートに商品がありません</div>
         )
       ) : (
-        <div>カートに商品がありません</div>
+        <div className="cartempty">カートに商品がありません</div>
       )}
     </>
   );
