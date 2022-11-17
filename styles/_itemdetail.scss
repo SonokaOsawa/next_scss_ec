@@ -1,0 +1,137 @@
+.itemdetailbody {
+  padding: 10px 10%;
+  width: 100%;
+  color: #333333;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 300px;
+  gap: 20px;
+}
+
+.firstitem {
+  position: static !important;
+}
+
+.detailimage {
+  position: static !important;
+  width: 90% !important;
+  height: auto !important;
+  border-radius: 5%;
+}
+
+.itemdes {
+  //   margin: 0 0 30px;
+}
+
+.title {
+  font-weight: bold;
+  margin: 30px 0 5px;
+}
+
+.cartbutton {
+  margin: 20px 0;
+  color: #fff;
+  background-color: #ff55ff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  &:hover {
+    opacity: 70%;
+  }
+}
+
+$iconColor: #ff55ff;
+
+.radio {
+  box-sizing: border-box;
+  transition: background-color 0.2s linear;
+  position: relative;
+  display: inline-block;
+  margin: 0 20px 8px 0;
+  padding: 12px 12px 12px 42px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  vertical-align: middle;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fedbfe;
+    &:after {
+      border-color: $iconColor;
+    }
+  }
+
+  &::before {
+    transition: opacity 0.2s linear;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    display: block;
+    margin-top: -5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $iconColor;
+    content: "";
+    opacity: 0;
+    input[type="radio"]:checked + & {
+      opacity: 1;
+    }
+  }
+
+  &::after {
+    transition: border-color 0.2s linear;
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    display: block;
+    margin-top: -10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #bbb;
+    border-radius: 6px;
+    content: "";
+  }
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.selectwrapper {
+  width: 20%;
+  position: relative;
+  border-radius: 8px;
+  background: #ffffff;
+  &::before {
+    position: absolute;
+    top: 0.8em;
+    right: 0.9em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: "";
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #666666;
+    pointer-events: none;
+  }
+}
+
+.select {
+  width: 100%;
+  cursor: pointer;
+  text-indent: 10px;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  background: transparent;
+  background-image: none;
+  box-shadow: none;
+  appearance: none;
+  padding: 8px 38px 8px 8px;
+}

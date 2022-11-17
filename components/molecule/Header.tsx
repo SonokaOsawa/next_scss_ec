@@ -79,7 +79,7 @@ const Header: FC = () => {
             </Link>
           </li>
           <li>
-            <Link href="/history" passHref>
+            <Link href="/history" passHref className="link">
               History
             </Link>
           </li>
