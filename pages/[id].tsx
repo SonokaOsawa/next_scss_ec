@@ -49,9 +49,11 @@ const Itemdetail: NextPage<Props> = (props) => {
       if (Object.keys(cart).length === 0) {
         // @ts-ignore
         dispatch(newCart([cartItem], user.uid));
+        alert("カートに追加しました。");
       } else {
         // @ts-ignore
         dispatch(addCart(cart, user.uid, [cartItem]));
+        alert("カートに追加しました。");
       }
     } else {
       if (Object.keys(cart).length === 0) {
@@ -60,66 +62,78 @@ const Itemdetail: NextPage<Props> = (props) => {
           status: 0,
         };
         dispatch(setCart(newcart));
+        alert("カートに追加しました。");
       } else {
         let newcart: Carttype = JSON.parse(JSON.stringify(cart));
         if (newcart.iteminfo) {
           newcart.iteminfo.push(cartItem);
           dispatch(setCart(newcart));
+          alert("カートに追加しました。");
         }
       }
     }
   };
   return (
-    <div>
-      <h2>{props.item.name}</h2>
-      <Image
-        src={`/${props.item.img}`}
-        alt="itemDetail"
-        width={400}
-        height={400}
-        className="rounded-lg"
-      />
-      <p>{props.item.des}</p>
-      <p>サイズ</p>
-      <label>
-        <input
-          type="radio"
-          value="M"
-          onChange={(e) => setSize(e.target.value)}
-          checked={size === "M"}
-        />
-        <span>M</span>
-        {props.item.pm && <Price price={props.item.pm} />}
-      </label>
-      <label>
-        <input
-          type="radio"
-          value="L"
-          onChange={(e) => setSize(e.target.value)}
-          checked={size === "L"}
-        />
-        <span>L</span>
-        {props.item.pl && <Price price={props.item.pl} />}
-      </label>
-      <p>
-        数量：
-        <select onChange={(e) => setBuynum(e.target.value)}>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </p>
-      <p>
-        ご注文金額　合計：
-        {total && <Price price={total} />}
-      </p>
-      <Btn
-        text="カートに入れる"
-        classname="flex items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white"
-        onClick={addCartBtn}
-      />
+    <div className="itemdetailbody">
+      <h2 className="itemdetailname">{props.item.name}</h2>
+      <div className="wrapper">
+        <div className="firstitem">
+          <Image
+            src={`/${props.item.img}`}
+            alt="itemDetail"
+            layout="fill"
+            objectFit="contain"
+            className="detailimage"
+          />
+        </div>
+        <div className="seconditem">
+          <div className="itemdes">{props.item.des}</div>
+          <div className="title">サイズ</div>
+          <input
+            type="radio"
+            value="M"
+            checked={size === "M"}
+            onChange={(e) => setSize(e.target.value)}
+          />
+          <label className="radio" onClick={(size) => setSize("M")}>
+            <span>M </span>
+            {props.item.pm && <Price price={props.item.pm} />}
+          </label>
+
+          <input
+            type="radio"
+            value="L"
+            checked={size === "L"}
+            onChange={(e) => setSize(e.target.value)}
+          />
+          <label className="radio" onClick={(size) => setSize("L")}>
+            <span>L </span>
+            {props.item.pl && <Price price={props.item.pl} />}
+          </label>
+          <div className="title">数量</div>
+          <div className="selectwrapper">
+            <select
+              onChange={(e) => setBuynum(e.target.value)}
+              className="select"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div className="title">
+            ご注文金額　合計：
+            {total && <Price price={total} />}
+          </div>
+          <Btn
+            text="カートに入れる"
+            classname="cartbutton"
+            onClick={addCartBtn}
+          />
+        </div>
+      </div>
     </div>
   );
 };
