@@ -9,10 +9,8 @@ const History = () => {
   return (
     <>
       {orders.length > 0 ? (
-        <div className="flex content-start">
-          <div className="w-2/3 p-2 text-gray-700">
-            <HistoryItems items={items} />
-          </div>
+        <div className="historyWrapper">
+          <HistoryItems items={items} />
         </div>
       ) : (
         <div>注文履歴がありません</div>

@@ -20,33 +20,31 @@ export const HistoryItems: FC<Props> = ({ items }) => {
     }
   };
   return (
-    <div className="bg-gray-200">
+    <div className="">
       {orders.map((order) => (
-        <div key={order.id} className="border-b border-white">
-          <div>{order.orderdate}</div>
+        <div key={order.id} className="historyBox">
+          {order.orderdate && <div>{order.orderdate.replace(/-/g, "/")}</div>}
           {order.iteminfo && (
             <>
               {order.iteminfo.map((orderitem) => (
-                <div key={orderitem.id} className="text-center">
+                <div key={orderitem.id} className="">
                   {items
                     .filter((item) => {
                       return orderitem.itemId === item.id;
                     })
                     .map((oi) => (
-                      <div className="grid grid-cols-3 gap-4" key={oi.id}>
-                        <div className="col-span-1 pt-1">
+                      <div className="flexBox" key={oi.id}>
+                        <div className="imgBox">
                           <Image
-                            alt="cartimage"
+                            alt="historyimage"
                             src={`/${oi.img}`}
                             width={200}
                             height={200}
                           />
                         </div>
-                        <div className="col-span-1 pt-1">
-                          <p>{oi.name}</p>
-                          <p>数量：{orderitem.buynum}</p>
-                        </div>
-                        <div className="col-span-1 pt-1">
+                        <div className="historyDetail">
+                          <div>{oi.name}</div>
+                          <div>数量：{orderitem.buynum}</div>
                           {orderitem.price && <Price price={orderitem.price} />}
                         </div>
                       </div>
@@ -55,15 +53,17 @@ export const HistoryItems: FC<Props> = ({ items }) => {
               ))}
             </>
           )}
-          {order.status === 9 ? (
-            <div>キャンセル済み</div>
-          ) : (
-            <Btn
-              onClick={() => cancelBtn(order)}
-              classname="items-center shadow border-blue-500 border-2 rounded-full  px-4 py-2 text-blue-500 hover:bg-blue-500 hover:text-white"
-              text="キャンセル"
-            />
-          )}
+          <div className="historyContentEnd">
+            {order.status === 9 ? (
+              <div className="cansel">キャンセル済み</div>
+            ) : (
+              <Btn
+                onClick={() => cancelBtn(order)}
+                classname="cancelbutton"
+                text="キャンセル"
+              />
+            )}
+          </div>
         </div>
       ))}
     </div>
