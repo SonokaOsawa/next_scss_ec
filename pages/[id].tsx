@@ -77,13 +77,14 @@ const Itemdetail: NextPage<Props> = (props) => {
     <div className="itemdetailbody">
       <h2 className="itemdetailname">{props.item.name}</h2>
       <div className="wrapper">
-        <div className="firstitem">
+        <div className="position">
           <Image
             src={`/${props.item.img}`}
             alt="itemDetail"
-            layout="fill"
-            objectFit="contain"
             className="detailimage"
+            fill
+            sizes="(max-width: 400px) 100vw"
+            priority
           />
         </div>
         <div className="seconditem">

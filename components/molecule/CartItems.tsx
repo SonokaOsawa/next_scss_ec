@@ -47,13 +47,14 @@ export const CartItems: FC<Props> = ({ items }) => {
                 })
                 .map((ci) => (
                   <div className="cartitemwrapper" key={ci.id}>
-                    <div>
+                    <div className="position">
                       <Image
                         alt="cartimage"
                         src={`/${ci.img}`}
-                        layout="fill"
-                        objectFit="contain"
                         className="detailimage"
+                        fill
+                        sizes="(max-width: 400px) 100vw"
+                        priority
                       />
                     </div>
                     <div className="">

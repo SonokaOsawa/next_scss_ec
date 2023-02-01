@@ -17,6 +17,7 @@ const Item: FC<Props> = ({ item }) => {
           className="image"
           width={300}
           height={300}
+          priority
         />
         <h3>{item.name}</h3>
         <p>{item.pm}円</p>

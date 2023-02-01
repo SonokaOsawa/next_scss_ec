@@ -73,10 +73,6 @@
   gap: 20px;
 }
 
-.firstitem {
-  position: static !important;
-}
-
 .detailimage {
   position: static !important;
   width: 90% !important;
@@ -104,7 +100,7 @@
 
 .radio {
   box-sizing: border-box;
-  transition: background-color 0.2s linear;
+  transition: background-color 0.15s linear;
   position: relative;
   display: inline-block;
   margin: 0 20px 8px 0;
@@ -121,7 +117,7 @@
   border-color: #ff55ff;
 }
 .radio::before {
-  transition: opacity 0.2s linear;
+  transition: opacity 0.15s linear;
   position: absolute;
   top: 50%;
   left: 20px;
@@ -138,7 +134,7 @@ input[type=radio]:checked + .radio::before {
   opacity: 1;
 }
 .radio::after {
-  transition: border-color 0.2s linear;
+  transition: border-color 0.15s linear;
   position: absolute;
   top: 50%;
   left: 15px;
@@ -189,6 +185,11 @@ input[type=radio] {
      -moz-appearance: none;
           appearance: none;
   padding: 8px 38px 8px 8px;
+  transition: all 0.15s linear;
+  border-radius: 7px;
+}
+.select:hover {
+  background-color: #fedbfe;
 }
 
 .cartdevide {
@@ -230,6 +231,10 @@ input[type=radio] {
   margin: 10%;
   font-weight: 600;
   font-size: 30px;
+}
+
+.position {
+  position: relative;
 }
 
 .orderformbody {

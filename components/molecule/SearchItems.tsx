@@ -10,7 +10,7 @@ const SearchItems: FC<Props> = ({ search }) => {
     <div className="searchitems">
       <div className="searchfield">
         <input
-          type="text"
+          type="searh"
           placeholder="商品を検索する"
           onChange={(e) => setWord(e.target.value)}
           className="searchinput"
