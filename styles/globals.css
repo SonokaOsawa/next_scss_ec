@@ -358,6 +358,10 @@ input[type=text]:focus {
   font-size: 12px;
 }
 
+.compBox {
+  text-align: center;
+}
+
 * {
   box-sizing: border-box;
 }

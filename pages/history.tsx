@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { HistoryItems } from "../components/molecule/HistoryItems";
 import { selectItems } from "../features/items";
-import { selectOrder } from "../features/order";
+import order, { selectOrder } from "../features/order";
 
 const History = () => {
   const items = useSelector(selectItems);
@@ -13,7 +13,7 @@ const History = () => {
           <HistoryItems items={items} />
         </div>
       ) : (
-        <div>注文履歴がありません</div>
+        <h2 className="compBox">注文履歴がありません</h2>
       )}
     </>
   );

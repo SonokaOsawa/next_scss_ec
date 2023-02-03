@@ -80,7 +80,7 @@ const Header: FC = () => {
           </li>
           <li>
             <Link href="/history" passHref className="link">
-              History
+              注文履歴
             </Link>
           </li>
           {user.name ? (
