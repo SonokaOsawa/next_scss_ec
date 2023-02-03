@@ -78,7 +78,6 @@ export const OrderForm: FC = () => {
   }
   const selDate = Number(selestedYear + selectedMonth + selectedDay);
   const orderBtn: SubmitHandler<Inputs> = (data) => {
-    console.log(today.getTime());
     const orderinfo: Ordertype = {
       id: cart.id,
       uid: cart.uid,
